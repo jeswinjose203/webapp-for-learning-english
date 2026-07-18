@@ -24,6 +24,23 @@ services:
       - key: DEBUG
         value: "false"
 
+  - type: web
+    name: chess-mcp
+    runtime: docker
+    rootDir: chess-mcp
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: MCP_API_TOKEN
+        generateValue: true
+      - key: MCP_TRANSPORT
+        value: sse
+      - key: PORT
+        value: "8080"
+
 databases:
   - name: english-learning-db
     plan: free
