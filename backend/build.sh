@@ -6,9 +6,11 @@ set -e
 echo "=== Installing backend dependencies ==="
 pip install -r requirements.txt
 
-echo "=== Building frontend ==="
+echo "=== Installing frontend dependencies ==="
 cd ../frontend
-npm install
+npm install --production=false
+
+echo "=== Building frontend ==="
 npm run build
 
 echo "=== Copying frontend to backend/static ==="
